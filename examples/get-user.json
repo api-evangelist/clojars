@@ -1,0 +1,9 @@
+{
+  "user": "weavejester",
+  "groups": [
+    "ring",
+    "compojure",
+    "hiccup",
+    "ring-mock"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "jar_name": "clojure",
+  "group_name": "org.clojure",
+  "version": "1.11.1",
+  "description": "The Clojure programming language",
+  "homepage": "https://clojure.org",
+  "downloads": 12500000,
+  "licenses": [
+    {
+      "name": "Eclipse Public License 1.0",
+      "url": "https://opensource.org/licenses/eclipse-1.0.php"
+    }
+  ],
+  "recent_versions": [
+    { "version": "1.11.1", "downloads": 3200000 },
+    { "version": "1.11.0", "downloads": 2800000 },
+    { "version": "1.10.3", "downloads": 2100000 },
+    { "version": "1.10.2", "downloads": 1900000 }
+  ],
+  "dependencies": [
+    {
+      "group_name": "org.clojure",
+      "jar_name": "spec.alpha",
+      "version": "0.3.218",
+      "scope": "compile"
+    },
+    {
+      "group_name": "org.clojure",
+      "jar_name": "core.specs.alpha",
+      "version": "0.2.62",
+      "scope": "compile"
+    }
+  ]
+}

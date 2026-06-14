@@ -27,7 +27,7 @@ apis:
       - type: Authentication
         url: https://github.com/clojars/clojars-web/wiki/Deploy-Tokens
       - type: OpenAPI
-        url: https://clojars.org/api
+        url: openapi/openapi.json
     contact:
       - FN: Clojars Team
         email: clojars@googlegroups.com

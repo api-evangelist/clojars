@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clojars.org/schema/user",
+  "title": "User",
+  "description": "A Clojars user profile including group memberships.",
+  "type": "object",
+  "properties": {
+    "user": {
+      "type": "string",
+      "description": "The Clojars username.",
+      "examples": ["ato", "weavejester"]
+    },
+    "groups": {
+      "type": "array",
+      "description": "List of Maven group identifiers the user has deploy rights to.",
+      "items": {
+        "type": "string"
+      },
+      "examples": [["net.cgrand", "org.clojure"], ["ring"]]
+    }
+  },
+  "required": ["user", "groups"]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clojars.org/schema/release-feed",
+  "title": "ReleaseFeed",
+  "description": "Paginated feed of recent artifact releases from Clojars.",
+  "type": "object",
+  "properties": {
+    "releases": {
+      "type": "array",
+      "description": "Up to 500 release entries for the requested time window.",
+      "items": {
+        "$ref": "#/$defs/Release"
+      }
+    },
+    "next_from": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp to pass as the 'from' parameter to fetch the next page. Null if no more pages."
+    }
+  },
+  "required": ["releases"],
+  "$defs": {
+    "Release": {
+      "type": "object",
+      "description": "A single artifact release event.",
+      "properties": {
+        "group_name": {
+          "type": "string",
+          "description": "The Maven group identifier.",
+          "examples": ["ring", "org.clojure"]
+        },
+        "jar_name": {
+          "type": "string",
+          "description": "The artifact name.",
+          "examples": ["ring-core", "clojure"]
+        },
+        "version": {
+          "type": "string",
+          "description": "The version that was deployed.",
+          "examples": ["1.11.0", "1.11.1"]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of when this version was deployed."
+        },
+        "description": {
+          "type": ["string", "null"],
+          "description": "Short description of the artifact."
+        }
+      },
+      "required": ["group_name", "jar_name", "version"]
+    }
+  }
+}

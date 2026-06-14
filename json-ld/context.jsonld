@@ -1,0 +1,71 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "clojars": "https://clojars.org/vocab#",
+    "jar_name": {
+      "@id": "clojars:jarName",
+      "@type": "xsd:string"
+    },
+    "group_name": {
+      "@id": "clojars:groupName",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "homepage": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "downloads": {
+      "@id": "clojars:downloads",
+      "@type": "xsd:integer"
+    },
+    "licenses": {
+      "@id": "schema:license"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "recent_versions": {
+      "@id": "clojars:recentVersions"
+    },
+    "dependencies": {
+      "@id": "clojars:dependencies"
+    },
+    "scope": {
+      "@id": "clojars:dependencyScope",
+      "@type": "xsd:string"
+    },
+    "user": {
+      "@id": "schema:accountName",
+      "@type": "xsd:string"
+    },
+    "groups": {
+      "@id": "schema:memberOf"
+    },
+    "releases": {
+      "@id": "clojars:releases"
+    },
+    "next_from": {
+      "@id": "clojars:nextFrom",
+      "@type": "xsd:dateTime"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  }
+}

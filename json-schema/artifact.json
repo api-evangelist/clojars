@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clojars.org/schema/artifact",
+  "title": "Artifact",
+  "description": "Full metadata for a Clojars artifact including versions, downloads, dependencies, and licenses.",
+  "type": "object",
+  "properties": {
+    "jar_name": {
+      "type": "string",
+      "description": "The artifact (JAR) name.",
+      "examples": ["clojure", "ring-core"]
+    },
+    "group_name": {
+      "type": "string",
+      "description": "The Maven group identifier.",
+      "examples": ["org.clojure", "ring"]
+    },
+    "version": {
+      "type": "string",
+      "description": "The latest released version string.",
+      "examples": ["1.11.1", "1.11.0"]
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Short human-readable description of the artifact."
+    },
+    "homepage": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL of the project homepage."
+    },
+    "downloads": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Cumulative total download count across all versions."
+    },
+    "licenses": {
+      "type": "array",
+      "description": "Software licenses declared for this artifact.",
+      "items": {
+        "$ref": "#/$defs/License"
+      }
+    },
+    "recent_versions": {
+      "type": "array",
+      "description": "Recent release versions with per-version download counts.",
+      "items": {
+        "$ref": "#/$defs/ArtifactVersion"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "Maven dependencies declared in the artifact's POM.",
+      "items": {
+        "$ref": "#/$defs/Dependency"
+      }
+    }
+  },
+  "required": ["jar_name", "group_name", "version"],
+  "$defs": {
+    "License": {
+      "type": "object",
+      "description": "A software license.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "License name.",
+          "examples": ["Eclipse Public License 1.0", "MIT"]
+        },
+        "url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "URL to the full license text."
+        }
+      },
+      "required": ["name"]
+    },
+    "ArtifactVersion": {
+      "type": "object",
+      "description": "A specific version of an artifact.",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "The version string.",
+          "examples": ["1.11.1"]
+        },
+        "downloads": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Download count for this specific version."
+        }
+      },
+      "required": ["version"]
+    },
+    "Dependency": {
+      "type": "object",
+      "description": "A Maven dependency declared by the artifact.",
+      "properties": {
+        "group_name": {
+          "type": "string",
+          "description": "The dependency's group identifier."
+        },
+        "jar_name": {
+          "type": "string",
+          "description": "The dependency's artifact name."
+        },
+        "version": {
+          "type": "string",
+          "description": "Required version of the dependency."
+        },
+        "scope": {
+          "type": ["string", "null"],
+          "description": "Maven dependency scope (compile, test, provided, etc.).",
+          "examples": ["compile", "test", "provided"]
+        }
+      },
+      "required": ["group_name", "jar_name", "version"]
+    }
+  }
+}
