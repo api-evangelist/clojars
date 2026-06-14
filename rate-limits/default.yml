@@ -1,0 +1,24 @@
+name: Default Rate Limits
+description: >
+  Clojars does not publicly document specific rate limits for its REST API.
+  All read endpoints are publicly accessible. The service is community-funded
+  open source infrastructure; abusive traffic patterns may result in access
+  restrictions at the infrastructure level (Fastly CDN).
+plan: Free
+limits:
+  - type: read_api
+    description: No documented per-IP or per-token rate limit for GET endpoints
+    limit: undocumented
+  - type: bulk_data
+    description: Bulk data files (all-poms.txt, all-jars.clj, feed.clj.gz, stats/) are updated hourly or daily; polling more frequently than the update interval provides no benefit
+    update_frequency: hourly or daily depending on endpoint
+  - type: release_feed
+    description: Release feed returns up to 500 releases per page; paginate using next_from timestamp parameter
+    page_size: 500
+  - type: download_stats
+    description: Download counts are recalculated once daily at 07:00 UTC
+    update_frequency: daily at 07:00 UTC
+notes:
+  - No official SLA published
+  - Service status available at https://clojars.statuspage.io
+  - Infrastructure provided by Fastly CDN; edge caching may apply

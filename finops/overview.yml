@@ -1,0 +1,34 @@
+name: Clojars FinOps Overview
+description: >
+  Clojars is a free, open source, community-maintained artifact repository.
+  There are no API usage costs, no metered billing, and no paid tiers.
+  All API consumers should be aware that the service is sustained by community
+  donations and volunteer effort; responsible usage (caching responses,
+  respecting bulk data update intervals) directly supports the platform's
+  sustainability.
+cost_model: free
+pricing_url: https://clojars.org/
+cost_drivers:
+  - type: API Calls
+    cost: $0.00
+    notes: All read API calls are free and unauthenticated
+  - type: Artifact Publishing
+    cost: $0.00
+    notes: Publishing requires a free account and deploy token; no per-publish fee
+  - type: Storage
+    cost: $0.00
+    notes: No storage fees for hosting artifacts
+optimization_tips:
+  - Cache API responses locally; artifact metadata changes infrequently
+  - Use bulk data files (all-poms.txt, feed.clj.gz) for bulk ingestion rather than making per-artifact API calls
+  - Poll release-feed with from= timestamp to get only new releases since last check
+  - Download statistics update once daily at 07:00 UTC; avoid polling stats endpoints more frequently
+  - Use compressed bulk files (all-poms.txt.gz, all-jars.clj.gz, feed.clj.gz) to reduce bandwidth
+funding_model:
+  maintainer: Clojurists Together Foundation
+  maintainer_url: https://www.clojuriststogether.org/
+  stipend: $1,500/month
+  infrastructure_sponsors:
+    - Fastly (CDN)
+    - DNSimple (DNS)
+    - 1Password (credential management)

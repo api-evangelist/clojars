@@ -1,0 +1,96 @@
+name: Clojars
+description: Clojars is a community repository for open source Clojure libraries, providing a REST API for searching artifacts, retrieving version information, accessing user and group data, and managing deployment credentials via deploy tokens.
+image: https://clojars.org/images/clojars-logo.png
+url: https://clojars.org/
+tags:
+  - Clojure
+  - Package Registry
+  - Artifact Repository
+  - Open Source
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+apis:
+  - name: Clojars REST API
+    description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository.
+    humanURL: https://github.com/clojars/clojars-web/wiki/Data
+    baseURL: https://clojars.org/api
+    tags:
+      - Artifacts
+      - Users
+      - Groups
+      - Search
+      - Release Feed
+    properties:
+      - type: Documentation
+        url: https://github.com/clojars/clojars-web/wiki/Data
+      - type: Authentication
+        url: https://github.com/clojars/clojars-web/wiki/Deploy-Tokens
+      - type: OpenAPI
+        url: https://clojars.org/api
+    contact:
+      - FN: Clojars Team
+        email: clojars@googlegroups.com
+        X-github: https://github.com/clojars
+    meta:
+      - key: authentication
+        value: Deploy tokens (username + token) for write operations; read endpoints are public
+      - key: formats
+        value: JSON (default), EDN, YAML, Transit+JSON via Accept header
+    plans:
+      - name: Free
+        description: Clojars is fully free and open source. No pricing tiers exist. Read API endpoints are public with no authentication required. Write/deploy operations require a free deploy token.
+        url: https://clojars.org/
+    endpoints:
+      - name: Get User
+        description: Returns the list of groups the specified user belongs to.
+        url: https://clojars.org/api/users/{username}
+        method: GET
+      - name: Get Group Artifacts
+        description: Returns all artifacts belonging to the specified group.
+        url: https://clojars.org/api/groups/{group_name}
+        method: GET
+      - name: Get Artifact
+        description: Returns metadata for a specific artifact, including latest version, downloads, dependencies, and licenses.
+        url: https://clojars.org/api/artifacts/{artifact_name}
+        method: GET
+      - name: Get Artifact by Group
+        description: Returns metadata for a specific artifact within a group namespace.
+        url: https://clojars.org/api/artifacts/{group_name}/{artifact_name}
+        method: GET
+      - name: Get Release Feed
+        description: Returns a paginated feed of releases after a given timestamp. Up to 500 releases per page.
+        url: https://clojars.org/api/release-feed
+        method: GET
+      - name: Search Artifacts
+        description: Searches artifacts by query string. Supports JSON and XML response formats.
+        url: https://clojars.org/search
+        method: GET
+      - name: All POMs List
+        description: Returns a plain-text list of all POM file paths. Updated hourly.
+        url: https://clojars.org/all-poms.txt
+        method: GET
+      - name: All JARs List
+        description: Returns a Leiningen-syntax list of all JAR artifact versions. Updated hourly.
+        url: https://clojars.org/all-jars.clj
+        method: GET
+      - name: Download Statistics
+        description: Returns daily or cumulative download statistics per artifact in EDN format.
+        url: https://clojars.org/stats/all.edn
+        method: GET
+common:
+  - type: StatusPage
+    url: https://clojars.statuspage.io
+  - type: GitHubOrg
+    url: https://github.com/clojars
+  - type: GitHubRepo
+    url: https://github.com/clojars/clojars-web
+  - type: Wiki
+    url: https://github.com/clojars/clojars-web/wiki
+  - type: MavenRepository
+    url: https://repo.clojars.org
+  - type: Sponsor
+    url: https://www.clojuriststogether.org/
+maintainers:
+  - FN: Clojurists Together
+    url: https://www.clojuriststogether.org/

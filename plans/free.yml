@@ -1,0 +1,27 @@
+name: Free
+description: >
+  Clojars is a fully free, community-maintained, open source repository for
+  Clojure libraries. There are no pricing tiers or paid plans. All read API
+  endpoints are publicly accessible without authentication. Publishing
+  (deploying) artifacts requires a free account and a deploy token.
+url: https://clojars.org/
+price: 0
+currency: USD
+billing: none
+features:
+  - Public read access to all artifact metadata via REST API
+  - User and group lookup endpoints
+  - Release feed with pagination
+  - Search across all artifacts (JSON and XML)
+  - Bulk data downloads (all-poms.txt, all-jars.clj, feed.clj.gz)
+  - Daily download statistics (all.edn)
+  - Free account registration for publishing artifacts
+  - Deploy token management (scoped, single-use, expiring tokens supported)
+  - Multiple response formats: JSON, EDN, YAML, Transit+JSON
+limits:
+  - No documented rate limits on read endpoints
+  - Deploy tokens required for publishing; password authentication deprecated
+  - Scoped tokens must target existing groups or artifacts
+funding:
+  - Clojurists Together Foundation ($1,500/month maintainer stipend)
+  - Infrastructure sponsors: Fastly, DNSimple, 1Password
