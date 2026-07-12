@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.json
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using your Clojars username and a deploy token (not
+    your password). Deploy tokens can be created at https://clojars.org/tokens. Required only
+    for write/deploy operations.
+  sources:
+  - openapi/openapi.json

@@ -79,6 +79,10 @@ apis:
         url: https://clojars.org/stats/all.edn
         method: GET
 common:
+  - type: DomainSecurity
+    url: security/clojars-domain-security.yml
+  - type: Authentication
+    url: authentication/clojars-authentication.yml
   - type: StatusPage
     url: https://clojars.statuspage.io
   - type: GitHubOrg
