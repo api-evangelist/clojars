@@ -79,6 +79,8 @@ apis:
         url: https://clojars.org/stats/all.edn
         method: GET
 common:
+  - type: AgenticAccess
+    url: agentic-access/clojars-agentic-access.yml
   - type: DomainSecurity
     url: security/clojars-domain-security.yml
   - type: Authentication
