@@ -1,0 +1,174 @@
+openapi: 3.0.3
+info:
+  title: Clojars REST Artifacts API
+  description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.
+  version: 1.0.0
+  contact:
+    name: Clojars Team
+    email: clojars@googlegroups.com
+    url: https://github.com/clojars
+  license:
+    name: Eclipse Public License
+    url: https://github.com/clojars/clojars-web/blob/main/COPYING
+  termsOfService: https://clojars.org/
+servers:
+- url: https://clojars.org
+  description: Clojars production server
+tags:
+- name: Artifacts
+  description: Operations related to Clojars artifacts and releases
+paths:
+  /api/artifacts/{artifact_name}:
+    get:
+      operationId: getArtifact
+      summary: Get Artifact
+      description: Returns metadata for a specific artifact, including latest version, downloads, dependencies, and licenses.
+      tags:
+      - Artifacts
+      parameters:
+      - name: artifact_name
+        in: path
+        required: true
+        description: The artifact name (without group prefix).
+        schema:
+          type: string
+          example: clojure
+      responses:
+        '200':
+          description: Artifact metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+        '404':
+          description: Artifact not found.
+  /api/artifacts/{group_name}/{artifact_name}:
+    get:
+      operationId: getArtifactByGroup
+      summary: Get Artifact by Group
+      description: Returns metadata for a specific artifact within a group namespace.
+      tags:
+      - Artifacts
+      parameters:
+      - name: group_name
+        in: path
+        required: true
+        description: The group identifier.
+        schema:
+          type: string
+          example: org.clojure
+      - name: artifact_name
+        in: path
+        required: true
+        description: The artifact name within the group.
+        schema:
+          type: string
+          example: clojure
+      responses:
+        '200':
+          description: Artifact metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+        '404':
+          description: Artifact not found.
+components:
+  schemas:
+    License:
+      type: object
+      description: A software license.
+      properties:
+        name:
+          type: string
+          description: The license name.
+          example: Eclipse Public License 1.0
+        url:
+          type: string
+          format: uri
+          description: URL to the license text.
+          example: https://opensource.org/licenses/eclipse-1.0.php
+    Dependency:
+      type: object
+      description: A dependency declared by an artifact.
+      properties:
+        group_name:
+          type: string
+          description: The dependency group.
+          example: org.clojure
+        jar_name:
+          type: string
+          description: The dependency artifact name.
+          example: spec.alpha
+        version:
+          type: string
+          description: The required version.
+          example: 0.2.194
+        scope:
+          type: string
+          description: The Maven dependency scope.
+          example: compile
+    Artifact:
+      type: object
+      description: Full metadata for a Clojars artifact.
+      properties:
+        jar_name:
+          type: string
+          description: The artifact (JAR) name.
+          example: clojure
+        group_name:
+          type: string
+          description: The group identifier.
+          example: org.clojure
+        version:
+          type: string
+          description: The latest released version.
+          example: 1.11.1
+        description:
+          type: string
+          description: A short description of the artifact.
+          example: The Clojure programming language
+        homepage:
+          type: string
+          format: uri
+          description: The project homepage URL.
+          example: https://clojure.org
+        licenses:
+          type: array
+          description: List of licenses for the artifact.
+          items:
+            $ref: '#/components/schemas/License'
+        downloads:
+          type: integer
+          description: Total number of downloads.
+          example: 1234567
+        recent_versions:
+          type: array
+          description: List of recent versions.
+          items:
+            $ref: '#/components/schemas/ArtifactVersion'
+        dependencies:
+          type: array
+          description: List of declared dependencies.
+          items:
+            $ref: '#/components/schemas/Dependency'
+    ArtifactVersion:
+      type: object
+      description: A version entry for an artifact.
+      properties:
+        version:
+          type: string
+          description: The version string.
+          example: 1.11.1
+        downloads:
+          type: integer
+          description: Number of downloads for this version.
+          example: 45000
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Clojars username and a deploy token (not your password). Deploy tokens can be created at https://clojars.org/tokens. Required only for write/deploy operations.
+externalDocs:
+  description: Clojars API Wiki
+  url: https://github.com/clojars/clojars-web/wiki/Data

@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: Clojars REST Artifacts Search API
+  description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.
+  version: 1.0.0
+  contact:
+    name: Clojars Team
+    email: clojars@googlegroups.com
+    url: https://github.com/clojars
+  license:
+    name: Eclipse Public License
+    url: https://github.com/clojars/clojars-web/blob/main/COPYING
+  termsOfService: https://clojars.org/
+servers:
+- url: https://clojars.org
+  description: Clojars production server
+tags:
+- name: Search
+  description: Search operations across the Clojars artifact index
+paths:
+  /search:
+    get:
+      operationId: searchArtifacts
+      summary: Search Artifacts
+      description: Searches artifacts by query string. Supports JSON and XML response formats via the format parameter.
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: The search query string.
+        schema:
+          type: string
+          example: ring
+      - name: format
+        in: query
+        required: false
+        description: Response format. Defaults to JSON.
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResults'
+            application/xml:
+              schema:
+                type: object
+                description: XML-formatted search results.
+components:
+  schemas:
+    SearchResults:
+      type: object
+      description: Search results from the Clojars artifact index.
+      properties:
+        results:
+          type: array
+          description: List of matching artifacts.
+          items:
+            $ref: '#/components/schemas/ArtifactSummary'
+        count:
+          type: integer
+          description: Total number of results found.
+          example: 42
+    ArtifactSummary:
+      type: object
+      description: A summary of a Clojars artifact.
+      properties:
+        jar_name:
+          type: string
+          description: The artifact (JAR) name.
+          example: clojure
+        group_name:
+          type: string
+          description: The group identifier.
+          example: org.clojure
+        version:
+          type: string
+          description: The latest released version.
+          example: 1.11.1
+        description:
+          type: string
+          description: A short description of the artifact.
+          example: The Clojure programming language
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Clojars username and a deploy token (not your password). Deploy tokens can be created at https://clojars.org/tokens. Required only for write/deploy operations.
+externalDocs:
+  description: Clojars API Wiki
+  url: https://github.com/clojars/clojars-web/wiki/Data

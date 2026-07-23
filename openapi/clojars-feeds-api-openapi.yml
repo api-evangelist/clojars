@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Clojars REST Artifacts Feeds API
+  description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.
+  version: 1.0.0
+  contact:
+    name: Clojars Team
+    email: clojars@googlegroups.com
+    url: https://github.com/clojars
+  license:
+    name: Eclipse Public License
+    url: https://github.com/clojars/clojars-web/blob/main/COPYING
+  termsOfService: https://clojars.org/
+servers:
+- url: https://clojars.org
+  description: Clojars production server
+tags:
+- name: Feeds
+  description: Release feed and bulk data operations
+paths:
+  /api/release-feed:
+    get:
+      operationId: getReleaseFeed
+      summary: Get Release Feed
+      description: Returns a paginated feed of releases after a given timestamp. Returns up to 500 releases per page. Paginate using the next_from timestamp from the response.
+      tags:
+      - Feeds
+      parameters:
+      - name: from
+        in: query
+        required: false
+        description: ISO 8601 timestamp to start the feed from (e.g. 2024-01-01T00:00:00Z).
+        schema:
+          type: string
+          format: date-time
+          example: '2024-01-01T00:00:00Z'
+      responses:
+        '200':
+          description: Paginated list of releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseFeed'
+  /all-poms.txt:
+    get:
+      operationId: getAllPoms
+      summary: All POMs List
+      description: Returns a plain-text list of all POM file paths available in the Clojars repository. Updated hourly.
+      tags:
+      - Feeds
+      responses:
+        '200':
+          description: Plain-text list of POM file paths, one per line.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'net/cgrand/parsley/0.9.3/parsley-0.9.3.pom
+
+                  org/clojure/clojure/1.11.1/clojure-1.11.1.pom'
+  /all-jars.clj:
+    get:
+      operationId: getAllJars
+      summary: All JARs List
+      description: Returns a Leiningen-syntax list of all JAR artifact versions available in the Clojars repository. Updated hourly.
+      tags:
+      - Feeds
+      responses:
+        '200':
+          description: Leiningen-syntax list of all JAR artifact versions.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '[net.cgrand/parsley "0.9.3"]
+
+                  [org.clojure/clojure "1.11.1"]'
+  /stats/all.edn:
+    get:
+      operationId: getDownloadStatistics
+      summary: Download Statistics
+      description: Returns daily or cumulative download statistics per artifact in EDN format. Statistics are recalculated once daily at 07:00 UTC.
+      tags:
+      - Feeds
+      responses:
+        '200':
+          description: Download statistics in EDN format.
+          content:
+            application/edn:
+              schema:
+                type: string
+                description: EDN-formatted download statistics map keyed by artifact coordinates.
+components:
+  schemas:
+    ReleaseFeed:
+      type: object
+      description: Paginated feed of recent releases.
+      properties:
+        releases:
+          type: array
+          description: List of release entries.
+          items:
+            $ref: '#/components/schemas/Release'
+        next_from:
+          type: string
+          format: date-time
+          description: Timestamp to use as the 'from' parameter for the next page.
+          example: '2024-02-01T12:00:00Z'
+    Release:
+      type: object
+      description: A single artifact release entry.
+      properties:
+        group_name:
+          type: string
+          description: The group identifier.
+          example: ring
+        jar_name:
+          type: string
+          description: The artifact name.
+          example: ring-core
+        version:
+          type: string
+          description: The released version.
+          example: 1.11.0
+        created:
+          type: string
+          format: date-time
+          description: When this version was deployed.
+          example: '2024-01-15T09:23:00Z'
+        description:
+          type: string
+          description: A short description of the artifact.
+          example: Core Ring library
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Clojars username and a deploy token (not your password). Deploy tokens can be created at https://clojars.org/tokens. Required only for write/deploy operations.
+externalDocs:
+  description: Clojars API Wiki
+  url: https://github.com/clojars/clojars-web/wiki/Data

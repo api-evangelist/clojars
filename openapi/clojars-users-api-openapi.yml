@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: Clojars REST Artifacts Users API
+  description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.
+  version: 1.0.0
+  contact:
+    name: Clojars Team
+    email: clojars@googlegroups.com
+    url: https://github.com/clojars
+  license:
+    name: Eclipse Public License
+    url: https://github.com/clojars/clojars-web/blob/main/COPYING
+  termsOfService: https://clojars.org/
+servers:
+- url: https://clojars.org
+  description: Clojars production server
+tags:
+- name: Users
+  description: Operations related to Clojars user profiles and group memberships
+paths:
+  /api/users/{username}:
+    get:
+      operationId: getUser
+      summary: Get User
+      description: Returns the list of groups the specified user belongs to.
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        description: The Clojars username to look up.
+        schema:
+          type: string
+          example: ato
+      responses:
+        '200':
+          description: User profile with group memberships.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              description: application/json, application/edn, application/yaml, or application/transit+json depending on Accept header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                user: ato
+                groups:
+                - net.cgrand
+                - org.clojure
+        '404':
+          description: User not found.
+components:
+  schemas:
+    User:
+      type: object
+      description: A Clojars user profile.
+      properties:
+        user:
+          type: string
+          description: The username.
+          example: ato
+        groups:
+          type: array
+          description: List of group identifiers the user belongs to.
+          items:
+            type: string
+          example:
+          - net.cgrand
+          - org.clojure
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your Clojars username and a deploy token (not your password). Deploy tokens can be created at https://clojars.org/tokens. Required only for write/deploy operations.
+externalDocs:
+  description: Clojars API Wiki
+  url: https://github.com/clojars/clojars-web/wiki/Data
