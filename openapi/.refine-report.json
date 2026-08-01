@@ -1,0 +1,22 @@
+{
+  "provider": "clojars",
+  "sources": [
+    "clojars-artifacts-api-openapi.yml",
+    "clojars-feeds-api-openapi.yml",
+    "clojars-groups-api-openapi.yml",
+    "clojars-search-api-openapi.yml",
+    "clojars-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "clojars-artifacts-api-openapi.yml",
+    "clojars-feeds-api-openapi.yml",
+    "clojars-groups-api-openapi.yml",
+    "clojars-search-api-openapi.yml",
+    "clojars-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
