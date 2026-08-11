@@ -94,6 +94,11 @@ apis:
   - type: Authentication
     url: https://github.com/clojars/clojars-web/wiki/Deploy-Tokens
 common:
+  - type: IssueTracker
+    url: https://github.com/clojars/clojars-web/issues
+  - type: License
+    name: EPL-1.0
+    url: https://github.com/clojars/clojars-web/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/clojars-agentic-access.yml
   - type: DomainSecurity
