@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "1b75f18f-ed12-4c23-929d-db256c61e986",
+      "name": "Search",
+      "description": {
+        "content": "Search operations across the Clojars artifact index",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c45d85d-fd8a-4c38-adee-7ccbd52dcb52",
+          "name": "Search Artifacts",
+          "request": {
+            "name": "Search Artifacts",
+            "description": {
+              "content": "Searches artifacts by query string. Supports JSON and XML response formats via the format parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The search query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. Defaults to JSON."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea8f8c56-49d0-426b-ad89-1e0915ed7ca0",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "ring"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"jar_name\": \"clojure\",\n      \"group_name\": \"org.clojure\",\n      \"version\": \"1.11.1\",\n      \"description\": \"The Clojure programming language\"\n    },\n    {\n      \"jar_name\": \"clojure\",\n      \"group_name\": \"org.clojure\",\n      \"version\": \"1.11.1\",\n      \"description\": \"The Clojure programming language\"\n    }\n  ],\n  \"count\": 42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clojars.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b3914cb9-bd7b-439d-8367-a1bbfeda06cc",
+    "name": "Clojars REST Artifacts Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.\n\nContact Support:\n Name: Clojars Team\n Email: clojars@googlegroups.com",
+      "type": "text/plain"
+    }
+  }
+}

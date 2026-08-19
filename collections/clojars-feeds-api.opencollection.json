@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clojars REST Artifacts Feeds API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feeds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Release Feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clojars.org/api/release-feed",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp to start the feed from (e.g. 2024-01-01T00:00:00Z)."
+              }
+            ]
+          },
+          "docs": "Returns a paginated feed of releases after a given timestamp. Returns up to 500 releases per page. Paginate using the next_from timestamp from the response."
+        },
+        {
+          "info": {
+            "name": "All POMs List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clojars.org/all-poms.txt"
+          },
+          "docs": "Returns a plain-text list of all POM file paths available in the Clojars repository. Updated hourly."
+        },
+        {
+          "info": {
+            "name": "All JARs List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clojars.org/all-jars.clj"
+          },
+          "docs": "Returns a Leiningen-syntax list of all JAR artifact versions available in the Clojars repository. Updated hourly."
+        },
+        {
+          "info": {
+            "name": "Download Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clojars.org/stats/all.edn"
+          },
+          "docs": "Returns daily or cumulative download statistics per artifact in EDN format. Statistics are recalculated once daily at 07:00 UTC."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

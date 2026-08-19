@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clojars REST Artifacts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Artifacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Artifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clojars.org/api/artifacts/:artifact_name",
+            "params": [
+              {
+                "name": "artifact_name",
+                "value": "",
+                "type": "path",
+                "description": "The artifact name (without group prefix)."
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific artifact, including latest version, downloads, dependencies, and licenses."
+        },
+        {
+          "info": {
+            "name": "Get Artifact by Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clojars.org/api/artifacts/:group_name/:artifact_name",
+            "params": [
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "path",
+                "description": "The group identifier."
+              },
+              {
+                "name": "artifact_name",
+                "value": "",
+                "type": "path",
+                "description": "The artifact name within the group."
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific artifact within a group namespace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "4c4fd389-8928-4ba7-83e5-5e2fb6dc1ba7",
+      "name": "Groups",
+      "description": {
+        "content": "Operations related to Clojars artifact groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f32cb657-c495-4cf5-8ed7-1ba1787a1089",
+          "name": "Get Group Artifacts",
+          "request": {
+            "name": "Get Group Artifacts",
+            "description": {
+              "content": "Returns all artifacts belonging to the specified group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "groups",
+                ":group_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_name",
+                  "description": "(Required) The group identifier (e.g. org.clojure)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d68a7f8e-1408-4b22-ad32-8d0f58fdc212",
+              "name": "List of artifacts in the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "groups",
+                    ":group_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_name",
+                      "description": "(Required) The group identifier (e.g. org.clojure)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"jar_name\": \"clojure\",\n    \"group_name\": \"org.clojure\",\n    \"version\": \"1.11.1\",\n    \"description\": \"The Clojure programming language\"\n  },\n  {\n    \"jar_name\": \"clojure\",\n    \"group_name\": \"org.clojure\",\n    \"version\": \"1.11.1\",\n    \"description\": \"The Clojure programming language\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afeb6bd1-0a6f-4162-a2ec-d6a22903c17f",
+              "name": "Group not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "groups",
+                    ":group_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_name",
+                      "description": "(Required) The group identifier (e.g. org.clojure)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clojars.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "745cda59-1f32-4d21-bb6b-5e4ca78d4fbf",
+    "name": "Clojars REST Artifacts Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.\n\nContact Support:\n Name: Clojars Team\n Email: clojars@googlegroups.com",
+      "type": "text/plain"
+    }
+  }
+}

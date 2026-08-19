@@ -1,0 +1,328 @@
+{
+  "item": [
+    {
+      "id": "9683e8c8-6f5e-474b-84f1-d984b42783ef",
+      "name": "Feeds",
+      "description": {
+        "content": "Release feed and bulk data operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dde9086b-4834-4a81-bbfe-65af3243ffa6",
+          "name": "Get Release Feed",
+          "request": {
+            "name": "Get Release Feed",
+            "description": {
+              "content": "Returns a paginated feed of releases after a given timestamp. Returns up to 500 releases per page. Paginate using the next_from timestamp from the response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "release-feed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "ISO 8601 timestamp to start the feed from (e.g. 2024-01-01T00:00:00Z)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27ca1cf6-3e13-4bac-b961-07e43f9a1873",
+              "name": "Paginated list of releases.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "release-feed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2024-01-01T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"releases\": [\n    {\n      \"group_name\": \"ring\",\n      \"jar_name\": \"ring-core\",\n      \"version\": \"1.11.0\",\n      \"created\": \"2024-01-15T09:23:00Z\",\n      \"description\": \"Core Ring library\"\n    },\n    {\n      \"group_name\": \"ring\",\n      \"jar_name\": \"ring-core\",\n      \"version\": \"1.11.0\",\n      \"created\": \"2024-01-15T09:23:00Z\",\n      \"description\": \"Core Ring library\"\n    }\n  ],\n  \"next_from\": \"2024-02-01T12:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "609a4ee2-96df-4325-8bee-607aa9cfc252",
+          "name": "All POMs List",
+          "request": {
+            "name": "All POMs List",
+            "description": {
+              "content": "Returns a plain-text list of all POM file paths available in the Clojars repository. Updated hourly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "all-poms.txt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bce068b7-9df1-42eb-9def-63d442f2ec3d",
+              "name": "Plain-text list of POM file paths, one per line.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-poms.txt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "net/cgrand/parsley/0.9.3/parsley-0.9.3.pom\norg/clojure/clojure/1.11.1/clojure-1.11.1.pom",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4bf245b-107e-40e2-93f4-8ad96376aa66",
+          "name": "All JARs List",
+          "request": {
+            "name": "All JARs List",
+            "description": {
+              "content": "Returns a Leiningen-syntax list of all JAR artifact versions available in the Clojars repository. Updated hourly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "all-jars.clj"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f9de36e-2c30-4a89-a23e-c94acff16f97",
+              "name": "Leiningen-syntax list of all JAR artifact versions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-jars.clj"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "[net.cgrand/parsley \"0.9.3\"]\n[org.clojure/clojure \"1.11.1\"]",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54fc9cd6-7807-4f88-8579-28eb138d8a89",
+          "name": "Download Statistics",
+          "request": {
+            "name": "Download Statistics",
+            "description": {
+              "content": "Returns daily or cumulative download statistics per artifact in EDN format. Statistics are recalculated once daily at 07:00 UTC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stats",
+                "all.edn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/edn"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e46eba1-f8c2-4a5c-9aa6-475a4f06c0d2",
+              "name": "Download statistics in EDN format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "all.edn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/edn"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/edn"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clojars.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fecb7b99-f7c1-45d4-a514-d049352251c4",
+    "name": "Clojars REST Artifacts Feeds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.\n\nContact Support:\n Name: Clojars Team\n Email: clojars@googlegroups.com",
+      "type": "text/plain"
+    }
+  }
+}
