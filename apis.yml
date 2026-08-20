@@ -18,6 +18,11 @@ tags:
   - Clojure
   - Package Registry
   - Artifact Repository
+  - Open-Source
+tags_raw:
+  - Clojure
+  - Package Registry
+  - Artifact Repository
   - Open Source
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -57,6 +62,8 @@ apis:
   humanURL: https://github.com/clojars/clojars-web/wiki/Data
   baseURL: https://clojars.org/api
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -85,6 +92,8 @@ apis:
   humanURL: https://github.com/clojars/clojars-web/wiki/Data
   baseURL: https://clojars.org/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
