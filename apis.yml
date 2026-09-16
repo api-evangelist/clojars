@@ -1,5 +1,7 @@
 name: Clojars
-description: Clojars is a community repository for open source Clojure libraries, providing a REST API for searching artifacts, retrieving version information, accessing user and group data, and managing deployment credentials via deploy tokens.
+description: Clojars is a community repository for open source Clojure libraries, providing a REST API
+  for searching artifacts, retrieving version information, accessing user and group data, and managing
+  deployment credentials via deploy tokens.
 deliveryModel:
   model: self-hosted
   license: EPL-1.0
@@ -29,17 +31,17 @@ accessModel:
 image: https://clojars.org/images/clojars-logo.png
 url: https://clojars.org/
 tags:
-  - Clojure
-  - Package Registry
-  - Artifact Repository
-  - Open-Source
+- Clojure
+- Package Registry
+- Artifact Repository
+- Open-Source
 tags_raw:
-  - Clojure
-  - Package Registry
-  - Artifact Repository
-  - Open Source
-created: "2026-06-13"
-modified: "2026-06-13"
+- Clojure
+- Package Registry
+- Artifact Repository
+- Open Source
+created: '2026-06-13'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: clojars:clojars-artifacts-api
@@ -117,29 +119,31 @@ apis:
   - type: Authentication
     url: https://github.com/clojars/clojars-web/wiki/Deploy-Tokens
 common:
-  - type: IssueTracker
-    url: https://github.com/clojars/clojars-web/issues
-  - type: License
-    name: EPL-1.0
-    url: https://github.com/clojars/clojars-web/blob/main/LICENSE
-  - type: AgenticAccess
-    url: agentic-access/clojars-agentic-access.yml
-  - type: DomainSecurity
-    url: security/clojars-domain-security.yml
-  - type: Authentication
-    url: authentication/clojars-authentication.yml
-  - type: StatusPage
-    url: https://clojars.statuspage.io
-  - type: GitHubOrg
-    url: https://github.com/clojars
-  - type: GitHubRepo
-    url: https://github.com/clojars/clojars-web
-  - type: Wiki
-    url: https://github.com/clojars/clojars-web/wiki
-  - type: MavenRepository
-    url: https://repo.clojars.org
-  - type: Sponsor
-    url: https://www.clojuriststogether.org/
+- type: Website
+  url: https://clojars.org
+- type: IssueTracker
+  url: https://github.com/clojars/clojars-web/issues
+- type: License
+  name: EPL-1.0
+  url: https://github.com/clojars/clojars-web/blob/main/LICENSE
+- type: AgenticAccess
+  url: agentic-access/clojars-agentic-access.yml
+- type: DomainSecurity
+  url: security/clojars-domain-security.yml
+- type: Authentication
+  url: authentication/clojars-authentication.yml
+- type: StatusPage
+  url: https://clojars.statuspage.io
+- type: GitHubOrg
+  url: https://github.com/clojars
+- type: GitHubRepo
+  url: https://github.com/clojars/clojars-web
+- type: Wiki
+  url: https://github.com/clojars/clojars-web/wiki
+- type: MavenRepository
+  url: https://repo.clojars.org
+- type: Sponsor
+  url: https://www.clojuriststogether.org/
 maintainers:
-  - FN: Clojurists Together
-    url: https://www.clojuriststogether.org/
+- FN: Clojurists Together
+  url: https://www.clojuriststogether.org/
