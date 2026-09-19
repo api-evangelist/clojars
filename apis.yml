@@ -64,6 +64,8 @@ apis:
   humanURL: https://github.com/clojars/clojars-web/wiki/Data
   baseURL: https://clojars.org/api
   tags:
+  - Feed
+  tags_raw:
   - Feeds
   properties:
   - type: OpenAPI
