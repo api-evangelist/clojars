@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Clojars REST Artifacts Groups API
+  title: Clojars REST Groups API
   description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.
   version: 1.0.0
   contact:

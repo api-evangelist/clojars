@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Clojars REST Artifacts API
   description: A RESTful API for searching and retrieving Clojure artifact metadata, user profiles, group memberships, and release feeds from the Clojars community repository. Read endpoints are public; write/deploy operations require a deploy token.
@@ -75,39 +75,18 @@ paths:
           description: Artifact not found.
 components:
   schemas:
-    License:
+    ArtifactVersion:
       type: object
-      description: A software license.
+      description: A version entry for an artifact.
       properties:
-        name:
-          type: string
-          description: The license name.
-          example: Eclipse Public License 1.0
-        url:
-          type: string
-          format: uri
-          description: URL to the license text.
-          example: https://opensource.org/licenses/eclipse-1.0.php
-    Dependency:
-      type: object
-      description: A dependency declared by an artifact.
-      properties:
-        group_name:
-          type: string
-          description: The dependency group.
-          example: org.clojure
-        jar_name:
-          type: string
-          description: The dependency artifact name.
-          example: spec.alpha
         version:
           type: string
-          description: The required version.
-          example: 0.2.194
-        scope:
-          type: string
-          description: The Maven dependency scope.
-          example: compile
+          description: The version string.
+          example: 1.11.1
+        downloads:
+          type: integer
+          description: Number of downloads for this version.
+          example: 45000
     Artifact:
       type: object
       description: Full metadata for a Clojars artifact.
@@ -152,18 +131,39 @@ components:
           description: List of declared dependencies.
           items:
             $ref: '#/components/schemas/Dependency'
-    ArtifactVersion:
+    License:
       type: object
-      description: A version entry for an artifact.
+      description: A software license.
       properties:
+        name:
+          type: string
+          description: The license name.
+          example: Eclipse Public License 1.0
+        url:
+          type: string
+          format: uri
+          description: URL to the license text.
+          example: https://opensource.org/licenses/eclipse-1.0.php
+    Dependency:
+      type: object
+      description: A dependency declared by an artifact.
+      properties:
+        group_name:
+          type: string
+          description: The dependency group.
+          example: org.clojure
+        jar_name:
+          type: string
+          description: The dependency artifact name.
+          example: spec.alpha
         version:
           type: string
-          description: The version string.
-          example: 1.11.1
-        downloads:
-          type: integer
-          description: Number of downloads for this version.
-          example: 45000
+          description: The required version.
+          example: 0.2.194
+        scope:
+          type: string
+          description: The Maven dependency scope.
+          example: compile
   securitySchemes:
     BasicAuth:
       type: http
