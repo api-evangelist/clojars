@@ -56,6 +56,19 @@ paths:
                 description: XML-formatted search results.
 components:
   schemas:
+    SearchResults:
+      type: object
+      description: Search results from the Clojars artifact index.
+      properties:
+        results:
+          type: array
+          description: List of matching artifacts.
+          items:
+            $ref: '#/components/schemas/ArtifactSummary'
+        count:
+          type: integer
+          description: Total number of results found.
+          example: 42
     ArtifactSummary:
       type: object
       description: A summary of a Clojars artifact.
@@ -76,19 +89,6 @@ components:
           type: string
           description: A short description of the artifact.
           example: The Clojure programming language
-    SearchResults:
-      type: object
-      description: Search results from the Clojars artifact index.
-      properties:
-        results:
-          type: array
-          description: List of matching artifacts.
-          items:
-            $ref: '#/components/schemas/ArtifactSummary'
-        count:
-          type: integer
-          description: Total number of results found.
-          example: 42
   securitySchemes:
     BasicAuth:
       type: http

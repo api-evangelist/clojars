@@ -92,20 +92,6 @@ paths:
                 description: EDN-formatted download statistics map keyed by artifact coordinates.
 components:
   schemas:
-    ReleaseFeed:
-      type: object
-      description: Paginated feed of recent releases.
-      properties:
-        releases:
-          type: array
-          description: List of release entries.
-          items:
-            $ref: '#/components/schemas/Release'
-        next_from:
-          type: string
-          format: date-time
-          description: Timestamp to use as the 'from' parameter for the next page.
-          example: '2024-02-01T12:00:00Z'
     Release:
       type: object
       description: A single artifact release entry.
@@ -131,6 +117,20 @@ components:
           type: string
           description: A short description of the artifact.
           example: Core Ring library
+    ReleaseFeed:
+      type: object
+      description: Paginated feed of recent releases.
+      properties:
+        releases:
+          type: array
+          description: List of release entries.
+          items:
+            $ref: '#/components/schemas/Release'
+        next_from:
+          type: string
+          format: date-time
+          description: Timestamp to use as the 'from' parameter for the next page.
+          example: '2024-02-01T12:00:00Z'
   securitySchemes:
     BasicAuth:
       type: http
