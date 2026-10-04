@@ -75,18 +75,6 @@ paths:
           description: Artifact not found.
 components:
   schemas:
-    ArtifactVersion:
-      type: object
-      description: A version entry for an artifact.
-      properties:
-        version:
-          type: string
-          description: The version string.
-          example: 1.11.1
-        downloads:
-          type: integer
-          description: Number of downloads for this version.
-          example: 45000
     Dependency:
       type: object
       description: A dependency declared by an artifact.
@@ -164,6 +152,18 @@ components:
           format: uri
           description: URL to the license text.
           example: https://opensource.org/licenses/eclipse-1.0.php
+    ArtifactVersion:
+      type: object
+      description: A version entry for an artifact.
+      properties:
+        version:
+          type: string
+          description: The version string.
+          example: 1.11.1
+        downloads:
+          type: integer
+          description: Number of downloads for this version.
+          example: 45000
   securitySchemes:
     BasicAuth:
       type: http
