@@ -122,6 +122,12 @@ apis:
   - type: Authentication
     url: https://github.com/clojars/clojars-web/wiki/Deploy-Tokens
 common:
+- type: Plans
+  url: plans/free.yml
+- type: RateLimits
+  url: rate-limits/default.yml
+- type: FinOps
+  url: finops/overview.yml
 - type: Website
   url: https://clojars.org
 - type: IssueTracker
