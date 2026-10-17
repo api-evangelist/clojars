@@ -75,6 +75,19 @@ paths:
           description: Artifact not found.
 components:
   schemas:
+    License:
+      type: object
+      description: A software license.
+      properties:
+        name:
+          type: string
+          description: The license name.
+          example: Eclipse Public License 1.0
+        url:
+          type: string
+          format: uri
+          description: URL to the license text.
+          example: https://opensource.org/licenses/eclipse-1.0.php
     Dependency:
       type: object
       description: A dependency declared by an artifact.
@@ -95,6 +108,18 @@ components:
           type: string
           description: The Maven dependency scope.
           example: compile
+    ArtifactVersion:
+      type: object
+      description: A version entry for an artifact.
+      properties:
+        version:
+          type: string
+          description: The version string.
+          example: 1.11.1
+        downloads:
+          type: integer
+          description: Number of downloads for this version.
+          example: 45000
     Artifact:
       type: object
       description: Full metadata for a Clojars artifact.
@@ -139,31 +164,6 @@ components:
           description: List of declared dependencies.
           items:
             $ref: '#/components/schemas/Dependency'
-    License:
-      type: object
-      description: A software license.
-      properties:
-        name:
-          type: string
-          description: The license name.
-          example: Eclipse Public License 1.0
-        url:
-          type: string
-          format: uri
-          description: URL to the license text.
-          example: https://opensource.org/licenses/eclipse-1.0.php
-    ArtifactVersion:
-      type: object
-      description: A version entry for an artifact.
-      properties:
-        version:
-          type: string
-          description: The version string.
-          example: 1.11.1
-        downloads:
-          type: integer
-          description: Number of downloads for this version.
-          example: 45000
   securitySchemes:
     BasicAuth:
       type: http
