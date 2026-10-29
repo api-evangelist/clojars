@@ -64,48 +64,152 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Community package repository for Clojure libraries with a REST API for searching artifacts, accessing version information, and managing deployment credentials.
+Clojars is a community repository for open source Clojure libraries, providing a REST API for searching artifacts, retrieving version information, accessing user and group data, and managing deployment credentials via deploy tokens.
 
-**Base URL:** https://clojars.org/api  
-**Documentation:** https://github.com/clojars/clojars-web/wiki/Data  
-**Status:** https://clojars.statuspage.io  
-**Maven Repository:** https://repo.clojars.org  
+**Areas:** Clojure · Package Registry · Artifact Repository · Open Source
 
-## APIs
+## Clojars on APIs.io
 
-| API | Description |
-|-----|-------------|
-| Clojars REST API | Search and retrieve Clojure artifact metadata, user profiles, group memberships, and release feeds |
+Everything profiled for Clojars is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/clojars/](https://apis.io/providers/clojars/)** — or go straight to one of the APIs or properties below.
 
-## Key Endpoints
+### APIs (5)
 
-| Endpoint | URL |
-|----------|-----|
-| Get User | `GET /api/users/{username}` |
-| Get Group Artifacts | `GET /api/groups/{group_name}` |
-| Get Artifact | `GET /api/artifacts/{artifact_name}` |
-| Get Artifact by Group | `GET /api/artifacts/{group_name}/{artifact_name}` |
-| Release Feed | `GET /api/release-feed?from=yyyy-MM-ddTHH:mm:ssZ` |
-| Search | `GET /search?q={query}&format=json` |
-| All POMs | `GET /all-poms.txt` |
-| All JARs | `GET /all-jars.clj` |
-| Download Stats | `GET /stats/all.edn` |
+- [Clojars Artifacts API](https://apis.io/apis/clojars/clojars-artifacts-api/) — Operations related to Clojars artifacts and releases
+- [Clojars Feeds API](https://apis.io/apis/clojars/clojars-feeds-api/) — Release feed and bulk data operations
+- [Clojars Groups API](https://apis.io/apis/clojars/clojars-groups-api/) — Operations related to Clojars artifact groups
+- [Clojars Search API](https://apis.io/apis/clojars/clojars-search-api/) — Search operations across the Clojars artifact index
+- [Clojars Users API](https://apis.io/apis/clojars/clojars-users-api/) — Operations related to Clojars user profiles and group memberships
 
-## Authentication
+### Published properties
 
-Read endpoints are public and require no authentication. Publishing artifacts requires a free account and a deploy token created at https://clojars.org/tokens.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Pricing
+#### Agentic access (1)
 
-Clojars is free and open source. No paid plans or tiers exist. Funded by the [Clojurists Together Foundation](https://www.clojuriststogether.org/).
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Response Formats
+- [Clojars Agentic Access](https://apis.io/agentic-access/clojars/clojars-agentic-access/)
 
-Specify format via `Accept` header:
+#### JSON Schema (3)
 
-| Format | Content-Type |
-|--------|--------------|
-| JSON (default) | `application/json` |
-| EDN | `application/edn` |
-| YAML | `application/yaml` |
-| Transit | `application/transit+json` |
+The data models the API reads and writes.
+
+- [Artifact](https://apis.io/schemas/clojars/artifact/)
+- [ReleaseFeed](https://apis.io/schemas/clojars/release-feed/)
+- [User](https://apis.io/schemas/clojars/user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [context Context](https://apis.io/jsonld/clojars/context/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Get Artifact By Group](https://apis.io/examples/clojars/get-artifact-by-group/)
+- [Get Release Feed](https://apis.io/examples/clojars/get-release-feed/)
+- [Get User](https://apis.io/examples/clojars/get-user/)
+- [Search Artifacts](https://apis.io/examples/clojars/search-artifacts/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Clojars REST Artifacts API](https://apis.io/collections/clojars/open-clojars-artifacts-api/)
+- [Clojars REST Artifacts Feeds API](https://apis.io/collections/clojars/open-clojars-feeds-api/)
+- [Clojars REST Artifacts Groups API](https://apis.io/collections/clojars/open-clojars-groups-api/)
+- [Clojars REST Artifacts Search API](https://apis.io/collections/clojars/open-clojars-search-api/)
+- [Clojars REST Artifacts Users API](https://apis.io/collections/clojars/open-clojars-users-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Clojars — jsonschema rules](https://apis.io/rules/clojars/clojars-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Clojars Authentication](https://apis.io/security/clojars/clojars-authentication/)
+- [Clojars Domain Security](https://apis.io/security/clojars/clojars-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Free](https://apis.io/plans/clojars/free/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Default](https://apis.io/rate-limits/clojars/default/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Overview](https://apis.io/finops/clojars/overview/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://clojars.org)
+- [Status](https://clojars.statuspage.io)
+
+## API Evangelist rating
+
+**Kin Score 28.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.9 |
+| Contract quality | 53.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 0.0 |
+
+**Agent readiness 23.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/clojars/](https://apis.io/providers/clojars/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Clojars: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/clojars/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
